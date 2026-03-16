@@ -1,16 +1,20 @@
-# Dependencies
-node_modules/
-package-lock.json
-
-# Build output
-dist/
-build/
-.next/
-
-# Environment variables
+# Environment variables (contains passwords)
 .env
 .env.local
 .env.*.local
+
+# Docker volumes (managed by Docker)
+db_data/
+wp_data/
+
+# WordPress core (pulled via Docker image)
+# Only track our custom child theme under wp-content/themes/hopeforheroes-child/
+
+# WordPress uploads (media files — too large for git)
+wp-content/uploads/
+
+# Custom plugins staging
+wp-content/plugins/
 
 # IDE / Editor
 .vscode/
@@ -25,10 +29,11 @@ Thumbs.db
 
 # Logs
 *.log
-npm-debug.log*
+debug.log
 
-# Testing
-coverage/
+# Dependencies
+node_modules/
+package-lock.json
 
 # Misc
 .cache/

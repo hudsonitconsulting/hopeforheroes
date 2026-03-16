@@ -1,0 +1,49 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: hfh_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_NAME:-wordpress}
+      MYSQL_USER: ${DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-wordpress}
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  wordpress:
+    image: wordpress:latest
+    container_name: hfh_wordpress
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
+      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      WORDPRESS_DEBUG: "true"
+    volumes:
+      - wp_data:/var/www/html
+      - ./wp-content/themes/hopeforheroes-child:/var/www/html/wp-content/themes/hopeforheroes-child
+      - ./wp-content/plugins:/var/www/html/wp-content/plugins-custom
+    ports:
+      - "8080:80"
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: hfh_phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+    ports:
+      - "8081:80"
+
+volumes:
+  db_data:
+  wp_data:

@@ -1,0 +1,277 @@
+/* ==========================================================================
+   Hope for Heroes — Additional Custom Styles
+   Animations, Elementor overrides, and component enhancements
+   ========================================================================== */
+
+/* ==========================================================================
+   HEADER ENHANCEMENTS
+   ========================================================================== */
+
+.hfh-header-scrolled {
+  background: rgba(27, 42, 91, 0.97) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--hfh-shadow-md);
+  transition: var(--hfh-transition);
+}
+
+/* Announcement bar */
+.hfh-announcement-bar {
+  background: var(--hfh-gold);
+  color: var(--hfh-navy);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-family: var(--hfh-font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.hfh-announcement-bar a {
+  color: var(--hfh-navy);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   MARQUEE / SCROLLING TEXT
+   ========================================================================== */
+
+.hfh-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--hfh-gold);
+  padding: 0.5rem 0;
+  font-family: var(--hfh-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--hfh-navy);
+}
+
+.hfh-marquee-content {
+  display: inline-block;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   GALA SECTION STYLES
+   ========================================================================== */
+
+.hfh-gala-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1B2A5B 0%, #0D1733 60%, #F5A623 100%);
+  overflow: hidden;
+}
+
+.hfh-gala-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(245, 166, 35, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(74, 155, 217, 0.1) 0%, transparent 40%);
+}
+
+.hfh-countdown {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.hfh-countdown-item {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--hfh-radius-md);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  backdrop-filter: blur(5px);
+  min-width: 80px;
+}
+
+.hfh-countdown-number {
+  font-family: var(--hfh-font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--hfh-gold);
+  line-height: 1;
+}
+
+.hfh-countdown-unit {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.25rem;
+}
+
+/* Sponsors grid */
+.hfh-sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  align-items: center;
+  justify-items: center;
+  padding: 2rem 0;
+}
+
+.hfh-sponsor-logo {
+  max-height: 60px;
+  width: auto;
+  filter: grayscale(50%);
+  opacity: 0.7;
+  transition: var(--hfh-transition);
+}
+
+.hfh-sponsor-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   GALLERY MASONRY
+   ========================================================================== */
+
+.hfh-gallery-grid {
+  columns: 3 300px;
+  column-gap: 1rem;
+}
+
+.hfh-gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  border-radius: var(--hfh-radius-md);
+  overflow: hidden;
+  box-shadow: var(--hfh-shadow-sm);
+  transition: var(--hfh-transition);
+}
+
+.hfh-gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: var(--hfh-shadow-md);
+}
+
+.hfh-gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   PODCAST SECTION
+   ========================================================================== */
+
+.hfh-podcast-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  background: var(--hfh-white);
+  border-radius: var(--hfh-radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--hfh-shadow-sm);
+  transition: var(--hfh-transition);
+  border-left: 4px solid var(--hfh-sky-blue);
+}
+
+.hfh-podcast-card:hover {
+  box-shadow: var(--hfh-shadow-md);
+  transform: translateY(-2px);
+}
+
+.hfh-podcast-platforms {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hfh-podcast-platform-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--hfh-radius-sm);
+  background: var(--hfh-light-gray);
+  color: var(--hfh-dark-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--hfh-transition);
+}
+
+.hfh-podcast-platform-link:hover {
+  background: var(--hfh-navy);
+  color: var(--hfh-white);
+}
+
+/* ==========================================================================
+   ELEMENTOR OVERRIDES
+   ========================================================================== */
+
+/* Make Elementor buttons match our design system */
+.elementor-button {
+  font-family: var(--hfh-font-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  border-radius: var(--hfh-radius-sm) !important;
+  transition: var(--hfh-transition) !important;
+}
+
+/* Elementor heading defaults */
+.elementor-heading-title {
+  font-family: var(--hfh-font-heading) !important;
+}
+
+/* Elementor text editor defaults */
+.elementor-text-editor {
+  font-family: var(--hfh-font-body) !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADDITIONS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hfh-gala-hero {
+    min-height: 50vh;
+  }
+
+  .hfh-countdown {
+    gap: 0.75rem;
+  }
+
+  .hfh-countdown-item {
+    padding: 0.75rem 1rem;
+    min-width: 60px;
+  }
+
+  .hfh-countdown-number {
+    font-size: 1.8rem;
+  }
+
+  .hfh-podcast-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hfh-gallery-grid {
+    columns: 2 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hfh-gallery-grid {
+    columns: 1;
+  }
+
+  .hfh-countdown {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

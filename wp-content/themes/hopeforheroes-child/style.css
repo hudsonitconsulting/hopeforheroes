@@ -1,0 +1,532 @@
+/*
+ Theme Name:   Hope for Heroes Texas
+ Theme URI:    https://hopeforheroestx.org
+ Description:  Custom child theme for Hope for Heroes Texas nonprofit. Built on Hello Elementor.
+ Author:       Hudson IT Consulting
+ Author URI:   https://hudsonitconsulting.com
+ Template:     hello-elementor
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  hopeforheroes-child
+*/
+
+/* ==========================================================================
+   DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --hfh-navy: #1B2A5B;
+  --hfh-navy-light: #2A3D7A;
+  --hfh-gold: #F5A623;
+  --hfh-gold-hover: #E8962A;
+  --hfh-warm-orange: #E8762D;
+  --hfh-sky-blue: #4A9BD9;
+  --hfh-sunshine: #FFD54F;
+  --hfh-soft-white: #FAFAFA;
+  --hfh-white: #FFFFFF;
+  --hfh-dark-text: #1A1A2E;
+  --hfh-body-text: #4A4A68;
+  --hfh-light-gray: #F0F2F5;
+
+  /* Gradients */
+  --hfh-hero-gradient: linear-gradient(135deg, #1B2A5B 0%, #2A3D7A 40%, #4A9BD9 100%);
+  --hfh-sunrise-gradient: linear-gradient(135deg, #F5A623 0%, #E8762D 50%, #1B2A5B 100%);
+  --hfh-warm-gradient: linear-gradient(180deg, #FFF8E1 0%, #FAFAFA 100%);
+  --hfh-cta-gradient: linear-gradient(135deg, #F5A623 0%, #E8762D 100%);
+
+  /* Typography */
+  --hfh-font-heading: 'Montserrat', sans-serif;
+  --hfh-font-body: 'Source Sans 3', sans-serif;
+
+  /* Spacing */
+  --hfh-section-padding: clamp(3rem, 8vw, 6rem);
+  --hfh-container-width: 1200px;
+
+  /* Shadows */
+  --hfh-shadow-sm: 0 2px 8px rgba(27, 42, 91, 0.08);
+  --hfh-shadow-md: 0 4px 20px rgba(27, 42, 91, 0.12);
+  --hfh-shadow-lg: 0 8px 40px rgba(27, 42, 91, 0.16);
+  --hfh-shadow-glow: 0 0 30px rgba(245, 166, 35, 0.3);
+
+  /* Border Radius */
+  --hfh-radius-sm: 8px;
+  --hfh-radius-md: 12px;
+  --hfh-radius-lg: 20px;
+  --hfh-radius-full: 50%;
+
+  /* Transitions */
+  --hfh-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --hfh-transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   GLOBAL STYLES
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--hfh-font-body);
+  color: var(--hfh-body-text);
+  background-color: var(--hfh-soft-white);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--hfh-font-heading);
+  color: var(--hfh-navy);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
+h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+
+a {
+  color: var(--hfh-sky-blue);
+  text-decoration: none;
+  transition: var(--hfh-transition);
+}
+
+a:hover {
+  color: var(--hfh-gold);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.hfh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: var(--hfh-radius-sm);
+  font-family: var(--hfh-font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--hfh-transition);
+  text-decoration: none;
+}
+
+.hfh-btn-primary {
+  background: var(--hfh-cta-gradient);
+  color: var(--hfh-white);
+  box-shadow: var(--hfh-shadow-md);
+}
+
+.hfh-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hfh-shadow-glow);
+  color: var(--hfh-white);
+}
+
+.hfh-btn-outline {
+  background: transparent;
+  color: var(--hfh-white);
+  border: 2px solid var(--hfh-gold);
+}
+
+.hfh-btn-outline:hover {
+  background: var(--hfh-gold);
+  color: var(--hfh-navy);
+}
+
+.hfh-btn-donate {
+  background: var(--hfh-gold);
+  color: var(--hfh-navy);
+  font-size: 1.1rem;
+  padding: 1rem 2.5rem;
+  border-radius: var(--hfh-radius-sm);
+  box-shadow: var(--hfh-shadow-md);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.hfh-btn-donate:hover {
+  background: var(--hfh-warm-orange);
+  color: var(--hfh-white);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--hfh-shadow-glow);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: var(--hfh-shadow-md); }
+  50% { box-shadow: 0 0 20px rgba(245, 166, 35, 0.4); }
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.hfh-card {
+  background: var(--hfh-white);
+  border-radius: var(--hfh-radius-md);
+  padding: 2rem;
+  box-shadow: var(--hfh-shadow-sm);
+  transition: var(--hfh-transition);
+  border: 1px solid rgba(27, 42, 91, 0.06);
+}
+
+.hfh-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hfh-shadow-md);
+}
+
+.hfh-card-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--hfh-hero-gradient);
+  border-radius: var(--hfh-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: var(--hfh-gold);
+  font-size: 1.5rem;
+}
+
+/* ==========================================================================
+   IMPACT COUNTERS
+   ========================================================================== */
+
+.hfh-counter-section {
+  background: var(--hfh-hero-gradient);
+  padding: var(--hfh-section-padding) 2rem;
+  text-align: center;
+  color: var(--hfh-white);
+}
+
+.hfh-counter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: var(--hfh-container-width);
+  margin: 0 auto;
+}
+
+.hfh-counter-item {
+  padding: 1.5rem;
+}
+
+.hfh-counter-number {
+  font-family: var(--hfh-font-heading);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  color: var(--hfh-gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.hfh-counter-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hfh-hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--hfh-hero-gradient);
+}
+
+.hfh-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(27, 42, 91, 0.7) 0%,
+    rgba(27, 42, 91, 0.4) 50%,
+    rgba(27, 42, 91, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.hfh-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hfh-hero h1 {
+  color: var(--hfh-white);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hfh-hero .hfh-tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--hfh-sunshine);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+
+.hfh-section {
+  padding: var(--hfh-section-padding) 2rem;
+}
+
+.hfh-section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.hfh-section-header h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--hfh-cta-gradient);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* Navy background section */
+.hfh-section-navy {
+  background: var(--hfh-navy);
+  color: var(--hfh-white);
+}
+
+.hfh-section-navy h2,
+.hfh-section-navy h3 {
+  color: var(--hfh-white);
+}
+
+/* Warm/joy background */
+.hfh-section-warm {
+  background: var(--hfh-warm-gradient);
+}
+
+/* CTA Section */
+.hfh-cta-section {
+  background: var(--hfh-cta-gradient);
+  text-align: center;
+  padding: var(--hfh-section-padding) 2rem;
+}
+
+.hfh-cta-section h2 {
+  color: var(--hfh-white);
+  margin-bottom: 1rem;
+}
+
+.hfh-cta-section p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   TESTIMONIALS
+   ========================================================================== */
+
+.hfh-testimonial {
+  background: var(--hfh-white);
+  border-radius: var(--hfh-radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--hfh-shadow-md);
+  position: relative;
+  border-left: 4px solid var(--hfh-gold);
+}
+
+.hfh-testimonial::before {
+  content: '"';
+  font-family: var(--hfh-font-heading);
+  font-size: 4rem;
+  color: var(--hfh-gold);
+  position: absolute;
+  top: 0.5rem;
+  left: 1.5rem;
+  line-height: 1;
+  opacity: 0.3;
+}
+
+.hfh-testimonial-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.hfh-testimonial-author {
+  font-family: var(--hfh-font-heading);
+  font-weight: 700;
+  color: var(--hfh-navy);
+}
+
+/* ==========================================================================
+   BOARD OF DIRECTORS
+   ========================================================================== */
+
+.hfh-board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.hfh-board-member {
+  text-align: center;
+  padding: 2rem;
+}
+
+.hfh-board-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--hfh-radius-full);
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 4px solid var(--hfh-gold);
+  box-shadow: var(--hfh-shadow-md);
+  transition: var(--hfh-transition);
+}
+
+.hfh-board-photo:hover {
+  transform: scale(1.05);
+  box-shadow: var(--hfh-shadow-glow);
+}
+
+/* ==========================================================================
+   NEWSLETTER SIGNUP
+   ========================================================================== */
+
+.hfh-newsletter {
+  background: var(--hfh-navy);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: var(--hfh-radius-lg);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hfh-newsletter h3 {
+  color: var(--hfh-white);
+  margin-bottom: 1rem;
+}
+
+.hfh-newsletter-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.hfh-newsletter-input {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--hfh-radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--hfh-white);
+  font-family: var(--hfh-font-body);
+  font-size: 1rem;
+  transition: var(--hfh-transition);
+}
+
+.hfh-newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hfh-newsletter-input:focus {
+  outline: none;
+  border-color: var(--hfh-gold);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+.hfh-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: var(--hfh-transition-slow);
+}
+
+.hfh-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hfh-slide-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: var(--hfh-transition-slow);
+}
+
+.hfh-slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hfh-slide-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: var(--hfh-transition-slow);
+}
+
+.hfh-slide-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hfh-hero {
+    min-height: 60vh;
+  }
+
+  .hfh-newsletter-form {
+    flex-direction: column;
+  }
+
+  .hfh-counter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hfh-counter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hfh-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
